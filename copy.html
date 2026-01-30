@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasindu Piyumal | Full-Stack Developer & Data Scientist</title>
+    <meta name="description" content="Professional portfolio of Pasindu Piyumal, a Full-Stack Developer and Data Science student specializing in web development and UAV design.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --color-primary: 79, 70, 229;
+            --color-secondary: 99, 102, 241;
+            --color-accent: 96, 165, 250; /* Light blue for dark mode */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        .dark body {
+            background-color: #111827;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .dark .glassmorphism {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .neumorphism {
+            border-radius: 16px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            box-shadow:  9px 9px 18px #d1d1d1, -9px -9px 18px #ffffff;
+        }
+        
+        .dark .neumorphism {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            box-shadow:  9px 9px 18px #0d121b, -9px -9px 18px #1a2433;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .dark .text-muted {
+            color: rgb(var(--color-accent)) !important; /* Light blue in dark mode */
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(var(--color-primary), 0.3);
+        }
+        
+        .btn-outline {
+            border: 2px solid #4f46e5;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px -3px rgba(var(--color-primary), 0.2);
+        }
+        
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .dark .project-card:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            color: white !important;
+        }
+        
+        input, textarea {
+    transition: all 0.3s ease;
+    color: #111827; /* Explicit black text for light mode */
+}
+
+input:focus, textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.dark input, .dark textarea {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f3f4f6 !important; /* Light gray/white text for dark mode */
+}
+
+.dark input:focus, .dark textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+}
+
+/* For placeholder text */
+::placeholder {
+    color: #6b7280; /* Medium gray for light mode */
+}
+
+.dark ::placeholder {
+    color: #9ca3af !important; /* Lighter gray for dark mode */
+}
+        
+        /* Skill bar styles */
+        .skill-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: #4f46e5;
+        }
+        
+        .dark .skill-name {
+            color: #60a5fa;
+        }
+        
+        .skill-percent {
+            font-weight: 500;
+            color: #6b7280;
+        }
+        
+        .dark .skill-percent {
+            color: #9ca3af;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dark .skill-bar {
+            background-color: #374151;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e5e7eb;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        
+        .dark .timeline::after {
+            background-color: #374151;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #4f46e5;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .dark .timeline-item::after {
+            background-color: #1f2937;
+            border-color: #60a5fa;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #e5e7eb;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #e5e7eb;
+        }
+        
+        .dark .left::before {
+            border-color: transparent transparent transparent #374151;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #e5e7eb;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #e5e7eb transparent transparent;
+        }
+        
+        .dark .right::before {
+            border-color: transparent #374151 transparent transparent;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .timeline-content {
+            background-color: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dark .timeline-date {
+            color: #60a5fa;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .dark .timeline-desc {
+            color: #9ca3af;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::before, .right::before {
+                left: 60px;
+                border: medium solid #e5e7eb;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #e5e7eb transparent transparent;
+            }
+            
+            .dark .left::before, .dark .right::before {
+                border-color: transparent #374151 transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+
+               /* Dark mode text color adjustments */
+.dark .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.dark .nav-link:hover {
+    color: #60a5fa !important;
+}
+
+.dark .text-2xl.font-bold.text-gradient {
+    color: white;
+}
+
+.dark .flex.items-center .text-2xl.font-bold,
+.dark .flex.items-center .text-sm.text-gray-500 {
+    color: #e5e7eb !important;
+}
+
+.dark .text-3xl.font-bold,
+.dark .text-xl.font-semibold,
+.dark .timeline-title,
+.dark .timeline-content h4 {
+    color: #e5e7eb !important;
+}
+
+.dark .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+.dark .project-card h3,
+.dark .project-card p {
+    color: #e5e7eb !important;
+}
+
+  /* Force section headings to stay black in dark mode */
+.dark .text-3xl.font-bold.text-gray-900,
+.dark .text-2xl.font-semibold.text-gray-900 {
+    color: #111827 !important; /* This is Tailwind's gray-900 */
+}
+
+/* Add this to your existing styles */
+.dark .text-black.dark\:text-white {
+    color: white !important;
+}
+
+#back-to-top {
+    transition: all 0.3s ease;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+    </style>
+</head>
+<body class="dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- 3D Background -->
+    <div id="3d-background" class="fixed inset-0 -z-10 opacity-30 dark:opacity-20"></div>
+    
+    <!-- Navigation -->
+    <nav class="glassmorphism fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gradient">Pasindu Piyumal</div>
+                <!-- Update the navigation links to include dark mode classes -->
+<div class="hidden md:flex space-x-8">
+    <a href="#home" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">Home</a>
+    <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">About</a>
+    <a href="#education" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">Education</a>
+    <a href="#skills" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">Skills</a>
+    <a href="#projects" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">Projects</a>
+    <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200 hover:text-indigo-400 dark:hover:text-blue-300 transition">Contact</a>
+</div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="md:hidden p-2" id="mobile-menu-button" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glassmorphism">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                <a href="#about" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+                <a href="#education" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Education</a>
+                <a href="#skills" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Skills</a>
+                <a href="#projects" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+                <a href="#contact" class="block px-3 py-2 hover:text-indigo-400 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <!-- Name Typing Effect -->
+                    <div id="name-typing" class="name-typing"></div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                        <span class="text-gradient">Full-Stack</span><br>
+                        <span class="text-black dark:text-white">Developer &</span><br>
+                        <span class="text-gradient">Data Scientist</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-600 dark:text-blue-300 max-w-lg" id="typing-effect"></p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn-primary px-8 py-3 text-white rounded-lg font-medium">Contact Me</a>
+                        <a href="#projects" class="btn-outline px-8 py-3 text-indigo-600 dark:text-blue-300 rounded-lg font-medium">View Projects</a>
+                        <a href="IT23273108_StudentPerformanceProfile.pdf" download class="btn-outline px-8 py-3 text-indigo-600 dark:text-blue-300 rounded-lg font-medium flex items-center">
+        Download CV
+        <i class="fas fa-download ml-2"></i>
+    </a>
+                    </div>
+                    <div class="mt-12 flex space-x-6">
+    <div class="flex items-center">
+        <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-3">
+            <i class="fas fa-code text-indigo-600 dark:text-blue-300 text-xl"></i>
+        </div>
+        <div>
+            <div class="text-2xl font-bold text-gray-800 dark:text-gray-200">10+</div>
+            <div class="text-sm text-gray-500 dark:text-gray-300">Projects</div>
+        </div>
+    </div>
+    <div class="flex items-center">
+        <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-3">
+            <i class="fas fa-user-graduate text-indigo-600 dark:text-blue-300 text-xl"></i>
+        </div>
+        <div>
+            <div class="text-2xl font-bold text-gray-800 dark:text-gray-200">3<sup>rd</sup> Year</div>
+            <div class="text-sm text-gray-500 dark:text-gray-300">Data Science | GPA: 3.4/4.0</div>
+        </div>
+    </div>
+</div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0" data-aos="fade-left">
+  <div class="relative">
+    <div class="w-56 h-56 md:w-72 md:h-72 mx-auto rounded-2xl overflow-hidden">
+      <!-- Photo-only container -->
+      <div class="w-full h-full flex items-center justify-center">
+        <!-- Your photo with maximum size -->
+        <img src="WhatsApp Image 2025-07-18 at 18.27.51_a1452963.jpg" alt="Pasindu Piyumal" 
+             class="w-full h-full object-cover rounded-full">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">About Me</h2>
+                <p class="text-gray-600 dark:text-blue-300 max-w-2xl mx-auto">Get to know the person behind the code</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 mt-10 md:mt-0" data-aos="fade-left">
+  <div class="relative">
+    <div class="w-56 h-56 md:w-72 md:h-72 mx-auto rounded-2xl overflow-hidden">
+      <!-- Photo-only container -->
+      <div class="w-full h-full flex items-center justify-center">
+        <!-- Your photo with maximum size -->
+        <img src="WhatsApp Image 2025-07-18 at 18.27.51_a1452963.jpg" alt="Pasindu Piyumal" 
+             class="w-full h-full object-cover rounded-full">
+      </div>
+    </div>
+  </div>
+</div>
+
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-6 text-gradient">Who Am I?</h3>
+                    <p class="text-gray-600 dark:text-blue-300 mb-6 leading-relaxed">
+                        I'm a passionate Full-Stack Developer and 3rd year Data Science student at SLIIT with a strong foundation in computer science and mathematics. My journey in technology began with a fascination for how things work, which evolved into a love for creating innovative solutions through code.
+                    </p>
+                    <p class="text-gray-600 dark:text-blue-300 mb-6 leading-relaxed">
+                        With expertise in both web development and data science, I bridge the gap between data-driven insights and user-friendly applications. I specialize in building scalable web applications with modern JavaScript frameworks while also applying machine learning techniques to solve complex problems.
+                    </p>
+                    <p class="text-gray-600 dark:text-blue-300 mb-8 leading-relaxed">
+                        Beyond coding, I'm an UAV enthusiast with hands-on experience in drone design and automation. This multidisciplinary approach allows me to bring unique perspectives to every project I undertake. I'm constantly learning new technologies and methodologies to stay at the forefront of the industry.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-map-marker-alt text-indigo-600 dark:text-blue-300"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-blue-300">Location</div>
+                                <div class="font-medium">Malabe, Sri Lanka</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-indigo-600 dark:text-blue-300"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 dark:text-blue-300">Email</div>
+                                <div class="font-medium">premachandrabmpp@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Education & Certifications</h2>
+                <p class="text-gray-600 dark:text-blue-300 max-w-2xl mx-auto">My academic journey and professional certifications</p>
+            </div>
+            
+            <div class="timeline" data-aos="fade-up">
+                <!-- Education Item 1 -->
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-title">BSc (Hons) in Information Technology</h3>
+                        <h4 class="text-indigo-600 dark:text-blue-300 mb-2">Sri Lanka Institute of Information Technology (SLIIT)</h4>
+                        <p class="timeline-desc">
+                            Specializing in Data Science with coursework in machine learning, statistical modeling, and big data analytics. 
+                            Maintaining a 3.4 GPA while actively participating in research projects and hackathons.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Education Item 2 -->
+                <div class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021/2022</div>
+                        <h3 class="timeline-title">Advanced Level Examination</h3>
+                        <h4 class="text-indigo-600 dark:text-blue-300 mb-2">Wayamba Royal College</h4>
+                        <p class="timeline-desc">
+                            Achieved 3 C's in Mathematics, Physics, and Chemistry. Served as member of the school's Computer Society, 
+                            organizing workshops on programming.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 1 -->
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-title">AWS Certified Developer - Associate</h3>
+                        <h4 class="text-indigo-600 dark:text-blue-300 mb-2">Amazon Web Services</h4>
+                        <p class="timeline-desc">
+                            Demonstrated proficiency in developing, deploying, and debugging cloud-based applications using AWS. 
+                            Gained expertise in AWS SDKs, CI/CD pipelines, and serverless architectures.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 2 -->
+                <div class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="timeline-title">Google Data Analytics Professional Certificate</h3>
+                        <h4 class="text-indigo-600 dark:text-blue-300 mb-2">Google</h4>
+                        <p class="timeline-desc">
+                            Completed intensive program covering data cleaning, analysis, visualization, and R programming. 
+                            Developed portfolio of projects demonstrating data analysis process from start to finish.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Certification Item 3 -->
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021</div>
+                        <h3 class="timeline-title">Full Stack Web Development Certification</h3>
+                        <h4 class="text-indigo-600 dark:text-blue-300 mb-2">freeCodeCamp</h4>
+                        <p class="timeline-desc">
+                            Earned certification by completing 300+ hours of coursework in HTML, CSS, JavaScript, React, Node.js, 
+                            and databases. Built multiple full-stack applications as part of the curriculum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Technical Skills</h2>
+                <p class="text-gray-600 dark:text-blue-300 max-w-2xl mx-auto">My proficiency across different technology stacks and tools</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Frontend Skills -->
+                <div class="glassmorphism p-8 rounded-xl" data-aos="fade-right">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-laptop-code text-indigo-600 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gradient">Frontend Development</h3>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">React.js</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Next.js</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">TypeScript</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Tailwind CSS</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Vue.js</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Skills -->
+                <div class="glassmorphism p-8 rounded-xl" data-aos="fade-left">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-server text-indigo-600 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gradient">Backend Development</h3>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Node.js</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Express</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Django</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">GraphQL</span>
+                            <span class="skill-percent">78%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Science Skills -->
+                <div class="glassmorphism p-8 rounded-xl" data-aos="fade-right">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-bar text-indigo-600 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gradient">Data Science</h3>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Python (Pandas, NumPy)</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Machine Learning</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">TensorFlow/Keras</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Data Visualization</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">SQL</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="glassmorphism p-8 rounded-xl" data-aos="fade-left">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-tools text-indigo-600 dark:text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gradient">Other Technologies</h3>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Docker</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Git/GitHub</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">AWS</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">ROS (Robot OS)</span>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-container">
+                        <div class="skill-info">
+                            <span class="skill-name">Fusion 360 (CAD)</span>
+                            <span class="skill-percent">65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-gray-600 dark:text-blue-300 max-w-2xl mx-auto">A selection of my most significant projects showcasing my skills across different domains.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card neumorphism rounded-xl overflow-hidden" data-aos="zoom-in">
+    <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+        <!-- Replace the icon with an image -->
+        <img src="p1.jpg" alt="E-Commerce Platform" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+            <a href="https://github.com/pasindu7828/Sustainable-Marketting-Wastage-Management-System.git" class="opacity-0 hover:opacity-100 transform translate-y-4 hover:translate-y-0 transition-all duration-300 px-6 py-3 bg-white text-indigo-600 rounded-lg font-medium">View Details</a>
+        </div>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+        <p class="text-gray-600 dark:text-blue-300 mb-4">A full-featured e-commerce solution with product management, cart functionality, and secure payments.(ITP Group Project)</p>
+        <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">React</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">Node.js</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">MongoDB</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">Express.js</span>
+        </div>
+    </div>
+</div>
+                
+                <!-- Project 2 -->
+            <div class="project-card neumorphism rounded-xl overflow-hidden" data-aos="zoom-in">
+    <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+        <!-- Replace the icon with an image -->
+        <img src="19.07.2025_08.35.17_REC.png" alt="E-Commerce Platform" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+            <a href="https://github.com/pasindu7828/Hospital-Management-System.git" class="opacity-0 hover:opacity-100 transform translate-y-4 hover:translate-y-0 transition-all duration-300 px-6 py-3 bg-white text-indigo-600 rounded-lg font-medium">View Details</a>
+        </div>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Hospital Management System</h3>
+        <p class="text-gray-600 dark:text-blue-300 mb-4">A full-featured Hospital-Management-System solution with make appointments, login credentials and usage of browser local storage data saving</p>
+        <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">HTML</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">CSS</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">Java Script</span>
+           
+        </div>
+    </div>
+</div>   
+                
+                <!-- Project 3 -->
+                <div class="project-card neumorphism rounded-xl overflow-hidden" data-aos="zoom-in">
+    <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+        <!-- Replace the icon with an image -->
+        <img src="tg.png" alt="E-Commerce Platform" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+            <a href="https://github.com/pasindu7828/Online-Tour-Guide-System.git" class="opacity-0 hover:opacity-100 transform translate-y-4 hover:translate-y-0 transition-all duration-300 px-6 py-3 bg-white text-indigo-600 rounded-lg font-medium">View Details</a>
+        </div>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Online Tour Guide System</h3>
+        <p class="text-gray-600 dark:text-blue-300 mb-4">A full-featured online tour guide solution with search destinations,booking options & cart functionality.</p>
+        <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">Java</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">SQL</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">Tomcat</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-800 dark:text-blue-300">JSP Servlet</span>
+        </div>
+    </div>
+</div>
+            </div>
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="https://github.com/pasindu7828" class="inline-flex items-center px-6 py-3 border border-indigo-600 text-indigo-600 dark:text-blue-300 rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-800 transition font-medium">
+                    View All Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">Get In Touch</h2>
+                <p class="text-gray-600 dark:text-blue-300 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-6 text-gradient">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-600 dark:text-blue-300 flex-shrink-0">
+                                <i class="fas fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">Email</h4>
+                                <p class="text-gray-600 dark:text-blue-300">premachandrabmpp@gmail.com</p>
+                                <a href="mailto:pasindu.piyumal@example.com" class="text-indigo-600 dark:text-blue-300 text-sm mt-1 inline-block hover:underline">Send a message</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-600 dark:text-blue-300 flex-shrink-0">
+                                <i class="fas fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">Phone</h4>
+                                <p class="text-gray-600 dark:text-blue-300">+94 776 757 795</p>
+                                <a href="tel:+94123456789" class="text-indigo-600 dark:text-blue-300 text-sm mt-1 inline-block hover:underline">Call me</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-full text-indigo-600 dark:text-blue-300 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">Location</h4>
+                                <p class="text-gray-600 dark:text-blue-300">Malabe, Sri Lanka</p>
+                                <a href="https://maps.google.com" target="_blank" class="text-indigo-600 dark:text-blue-300 text-sm mt-1 inline-block hover:underline">View on map</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-medium text-lg mb-6">Connect with me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/pasindu7828" class="social-icon p-4 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900 transition">
+                                <i class="fab fa-github text-gray-700 dark:text-blue-300 text-xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/pasindu-piyumal-69a217366/" class="social-icon p-4 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900 transition">
+                                <i class="fab fa-linkedin-in text-gray-700 dark:text-blue-300 text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon p-4 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900 transition">
+                                <i class="fab fa-twitter text-gray-700 dark:text-blue-300 text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon p-4 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900 transition">
+                                <i class="fab fa-stack-overflow text-gray-700 dark:text-blue-300 text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-700 dark:text-blue-300">Your Name *</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-700 dark:text-blue-300">Your Email *</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-2 text-sm font-medium text-gray-700 dark:text-blue-300">Subject *</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-700 dark:text-blue-300">Your Message *</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary px-8 py-3 text-white rounded-lg hover:bg-indigo-700 transition w-full font-medium">
+                            Send Message
+                            <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold text-gradient mb-2">Pasindu Piyumal</div>
+                    <p class="text-sm">Innovative solutions through code and data.</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="#home" class="hover:text-blue-300 transition">Home</a>
+                        <a href="#about" class="hover:text-blue-300 transition">About</a>
+                        <a href="#education" class="hover:text-blue-300 transition">Education</a>
+                        <a href="#skills" class="hover:text-blue-300 transition">Skills</a>
+                        <a href="#projects" class="hover:text-blue-300 transition">Projects</a>
+                        <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
+                    </div>
+                    <p class="text-sm">&copy; 2025 Pasindu Piyumal. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-4 bg-indigo-600 dark:bg-blue-500 text-white rounded-full shadow-lg hover:bg-indigo-700 dark:hover:bg-blue-600 transition-all duration-300 opacity-0 invisible">
+    <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.toggle('dark', savedTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            
+            // Update cube color based on theme
+            if (typeof cube !== 'undefined') {
+                const color = html.classList.contains('dark') ? 0x60a5fa : 0x4f46e5;
+                cube.material.color.setHex(color);
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.innerHTML = mobileMenu.classList.contains('hidden') ? 
+                '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Name Typing Effect
+        new TypeIt('#name-typing', {
+            speed: 60,
+            loop: true
+        })
+        .type("Hi, I'm Pasindu Piyumal.")
+        .pause(500)
+        .delete()
+        
+        .go();
+
+        // Description Typing Effect
+        new TypeIt('#typing-effect', {
+            speed: 45,
+            startDelay: 4500,
+            loop: true
+        })
+        .type("Building clean and scalable applications.")
+        .pause(2000)
+        .delete()
+        .type("Passionate about AI, drones, and full-stack dev.")
+        .pause(2000)
+        .delete()
+        .type("Let's collaborate on something great!")
+        .pause(2000)
+        .delete()
+        .go();
+
+        // 3D Background with Three.js - Floating Cube
+        let scene, camera, renderer, cube;
+
+        const init3DBackground = () => {
+            const container = document.getElementById('3d-background');
+            
+            // Create scene
+            scene = new THREE.Scene();
+            
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ 
+                alpha: true, 
+                antialias: true 
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+            
+            // Create cube
+            const geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+            const color = html.classList.contains('dark') ? 0x60a5fa : 0x4f46e5; // Light blue in dark mode
+            const material = new THREE.MeshBasicMaterial({ 
+                color: color,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+            
+            // Add inner cube
+            const innerGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const innerMaterial = new THREE.MeshBasicMaterial({
+                color: color,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.3
+            });
+            const innerCube = new THREE.Mesh(innerGeometry, innerMaterial);
+            cube.add(innerCube);
+            
+            // Add particles around the cube
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particleCount = 500;
+            
+            const posArray = new Float32Array(particleCount * 3);
+            
+            for(let i = 0; i < particleCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.05,
+                color: color,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            // Mouse movement effect
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+            
+            // Animation
+            const clock = new THREE.Clock();
+            
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                const elapsedTime = clock.getElapsedTime();
+                
+                // Rotate cube
+                cube.rotation.x = elapsedTime * 0.2;
+                cube.rotation.y = elapsedTime * 0.3;
+                
+                // Float up and down
+                cube.position.y = Math.sin(elapsedTime * 0.5) * 0.5;
+                
+                // Mouse movement effect
+                camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+                camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+                
+                renderer.render(scene, camera);
+            };
+            
+            animate();
+            
+            // Handle resize
+            const handleResize = () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+            
+            window.addEventListener('resize', handleResize);
+            
+            // Cleanup on unmount
+            return () => {
+                window.removeEventListener('resize', handleResize);
+                container.removeChild(renderer.domElement);
+            };
+        };
+
+        // Initialize 3D background if Three.js is available
+        if (typeof THREE !== 'undefined') {
+            init3DBackground();
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // GSAP animations
+        gsap.from("nav", {
+            y: -50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.from("#home h1", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+
+        gsap.from("#home p", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.6,
+            ease: "power3.out"
+        });
+
+        gsap.from("#home a", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.9,
+            ease: "power3.out",
+            stagger: 0.2
+        });
+
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        };
+
+        // Create intersection observer for skill bars
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Form submission
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically send the form data to a server
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+
+        // Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+        backToTopButton.classList.add('hidden');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+    </script>
+
+
+      
+</body>
+</html>
